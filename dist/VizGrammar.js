@@ -740,6 +740,7 @@ function getBarMark(config, metadata){
   }
 
   var mark = {
+                  "name": "bars",
                   "type": "rect",
                   "from": {"data": config.title},
                   "properties": {
@@ -759,6 +760,7 @@ function getStackBarMark(config, metadata){
   var markContent;
   if (config.orientation == "left") {
     mark = {
+        "name": "bars",
         "type": "rect",
         "from": {
           "data": config.title,
@@ -787,6 +789,7 @@ function getStackBarMark(config, metadata){
   } else {
 
     mark = {
+        "name": "bars",
         "type": "rect",
         "from": {
           "data": config.title,
@@ -813,10 +816,6 @@ function getStackBarMark(config, metadata){
         }
       };
   }
-
-
-      
-
   return mark;
 }
 
@@ -824,6 +823,7 @@ function getGroupBarMark(config, metadata){
   var mark;
   if (config.orientation == "left") {
       mark =  {
+          "name": "bars",
           "type": "group",
           "from": {
             "data": config.title,
@@ -845,7 +845,7 @@ function getGroupBarMark(config, metadata){
           ],
           "marks": [
           {
-              "name": "bars",
+              "name": "bar",
               "type": "rect",
               "properties": {
                 "update": {
@@ -866,6 +866,7 @@ function getGroupBarMark(config, metadata){
         };
   } else {
       mark =  {
+          "name": "bars",
           "type": "group",
           "from": {
             "data": config.title,
@@ -887,7 +888,7 @@ function getGroupBarMark(config, metadata){
           ],
           "marks": [
           {
-              "name": "bars",
+              "name": "bar",
               "type": "rect",
               "properties": {
                 "update": {
@@ -1051,6 +1052,7 @@ function getLineMark(config, metadata){
                   },
                   "marks": [
                     {
+                      "name": "line",
                       "type": "line",
                       "properties": {
                         "update": {
@@ -1070,11 +1072,11 @@ function getLineMark(config, metadata){
                 };
         } else {
             mark = {
+                    "name": "line",
                     "type": "line",
                     "from": {"data": config.title},
                     "properties": {
                       "update": {
-
                         "x": {"scale": "x", "field": metadata.names[config.x]},
                         "y": {"scale": "y", "field": metadata.names[config.y]},
                         "stroke": { "value": config.markColor},
@@ -2378,7 +2380,6 @@ function getRangeMark(config, marks) {
 function getLegend(config) {
   var legends = [
           {
-            "name": "legend",
             "fill": "color",
             "title": config.legendTitle,
             "offset": 0,
@@ -2393,7 +2394,7 @@ function getLegend(config) {
                   "labels": {
                       "fill": {"value": config.legendTextColor},
                       "fontSize": {"value": config.ledgendTextFontSize}
-                    }
+                  }
               }
           }
       ];

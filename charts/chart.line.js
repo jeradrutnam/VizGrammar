@@ -112,6 +112,7 @@ function getLineMark(config, metadata){
                   },
                   "marks": [
                     {
+                      "name": "line",
                       "type": "line",
                       "properties": {
                         "update": {
@@ -131,11 +132,11 @@ function getLineMark(config, metadata){
                 };
         } else {
             mark = {
+                    "name": "line",
                     "type": "line",
                     "from": {"data": config.title},
                     "properties": {
                       "update": {
-
                         "x": {"scale": "x", "field": metadata.names[config.x]},
                         "y": {"scale": "y", "field": metadata.names[config.y]},
                         "stroke": { "value": config.markColor},

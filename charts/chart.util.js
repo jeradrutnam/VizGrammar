@@ -499,7 +499,6 @@ function getRangeMark(config, marks) {
 function getLegend(config) {
   var legends = [
           {
-            "name": "legend",
             "fill": "color",
             "title": config.legendTitle,
             "offset": 0,
@@ -514,7 +513,7 @@ function getLegend(config) {
                   "labels": {
                       "fill": {"value": config.legendTextColor},
                       "fontSize": {"value": config.ledgendTextFontSize}
-                    }
+                  }
               }
           }
       ];

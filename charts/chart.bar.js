@@ -314,6 +314,7 @@ function getBarMark(config, metadata){
   }
 
   var mark = {
+                  "name": "bars",
                   "type": "rect",
                   "from": {"data": config.title},
                   "properties": {
@@ -333,6 +334,7 @@ function getStackBarMark(config, metadata){
   var markContent;
   if (config.orientation == "left") {
     mark = {
+        "name": "bars",
         "type": "rect",
         "from": {
           "data": config.title,
@@ -361,6 +363,7 @@ function getStackBarMark(config, metadata){
   } else {
 
     mark = {
+        "name": "bars",
         "type": "rect",
         "from": {
           "data": config.title,
@@ -387,10 +390,6 @@ function getStackBarMark(config, metadata){
         }
       };
   }
-
-
-      
-
   return mark;
 }
 
@@ -398,6 +397,7 @@ function getGroupBarMark(config, metadata){
   var mark;
   if (config.orientation == "left") {
       mark =  {
+          "name": "bars",
           "type": "group",
           "from": {
             "data": config.title,
@@ -419,7 +419,7 @@ function getGroupBarMark(config, metadata){
           ],
           "marks": [
           {
-              "name": "bars",
+              "name": "bar",
               "type": "rect",
               "properties": {
                 "update": {
@@ -440,6 +440,7 @@ function getGroupBarMark(config, metadata){
         };
   } else {
       mark =  {
+          "name": "bars",
           "type": "group",
           "from": {
             "data": config.title,
@@ -461,7 +462,7 @@ function getGroupBarMark(config, metadata){
           ],
           "marks": [
           {
-              "name": "bars",
+              "name": "bar",
               "type": "rect",
               "properties": {
                 "update": {
