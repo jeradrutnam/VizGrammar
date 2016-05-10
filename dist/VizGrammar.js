@@ -1933,7 +1933,14 @@ function checkConfig(config, metadata){
         rangeCursor:"grab",
 
         //Tool Configs
-        tooltip: {"enabled":true, "color":"#e5f2ff", "type":"symbol"},
+        tooltip: {
+            "enabled":true,
+            "bgColor":"#000",
+            "textColor":"#fff",
+            "opacity":"0.9",
+            "fontSize":"12px",
+            "type":"symbol"
+        },
 
         //Legend Configs
         legend:true,
@@ -2195,23 +2202,24 @@ function bindTooltip(div, view, config, metadata){
                         tooltipContent += content+"<br/>" ;
                     }
                 };
-
-        }
-
-       
+            }
         } 
-
 
         if (tooltipContent != "") {
             tooltipDiv.innerHTML = tooltipContent;
-            tooltipDiv.style.padding = "5px 5px 5px 5px";
+            tooltipDiv.style.padding = "5px";
+            tooltipDiv.style.backgroundColor = config.tooltip.bgColor;
+            tooltipDiv.style.color = config.tooltip.textColor;
+            tooltipDiv.style.fontSize = config.tooltip.fontSize;
+            tooltipDiv.style.opacity = config.tooltip.opacity;
+            tooltipDiv.style.opacity = config.tooltip.opacity;
+            tooltipDiv.className = "chart-tooltip";
         }
 
         window.onmousemove = function (e) {
           tooltipDiv.style.top = (e.clientY + 15) + 'px';
           tooltipDiv.style.left = (e.clientX + 10) + 'px';
           tooltipDiv.style.zIndex  = 1000;
-          tooltipDiv.style.backgroundColor = config.tooltip.color;
           tooltipDiv.style.position = "fixed";
 
           if (tooltipDiv.offsetWidth +  e.clientX - (cumulativeOffset(document.getElementById(div.replace("#", ""))).left + config.padding.left)  >  document.getElementById(div.replace("#", "")).offsetWidth) {
