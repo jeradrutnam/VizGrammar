@@ -1987,7 +1987,7 @@ function checkConfig(config, metadata){
       config.markColor = config.colorScale[0];
     }
 
-	  config.x = metadata.names.indexOf(config.x);
+    config.x = metadata.names.indexOf(config.x);
     config.y = metadata.names.indexOf(config.y);
     
     if (config.xScaleDomain == null) {
@@ -2025,15 +2025,16 @@ function buildData(data, metadata) {
 	General function used to draw circle symbols graphs
 */
 function getSymbolMark(config, metadata) {
-
-  var fill;
-  if (config.color != -1) { 
+    
+    var fill;
+    
+    if (config.color != -1) { 
       fill =  {"scale": "color", "field": metadata.names[config.color]};
-  } else {
+    } else {
       fill = {"value":config.markColor};
-  }
+    }
 
-var mark = {
+    var mark = {
       "name": "points-group",
       "type": "symbol",
       "from": {"data": config.title},
@@ -2081,7 +2082,7 @@ function bindTooltip(div,markType,eventObj, config, metaData, keyList){
 
             $(div).wrap( "<div id='wrapper' style='position: relative'></div>" );
 
-            $("#wrapper").append("<div id='tip' class='tooltipClass' style='top:0; left: 0; position: absolute'></div>");
+            $("#wrapper").append("<div id='tip' class='chart-tooltip' style='top:0; left: 0; position: absolute'></div>");
             $tip=$('#tip');
             $tip.empty();
 
@@ -2153,7 +2154,7 @@ function bindTooltip(div,markType,eventObj, config, metaData, keyList){
 
 function createTooltip(div) {
    document.getElementById(div.replace("#", "")).innerHTML = document.getElementById(div.replace("#", "")).innerHTML 
-        + "<div id= "+div.replace("#", "")+"-tooltip></div>";
+        + "<div id= "+div.replace("#", "")+"-tooltip class='chart-tooltip'></div>";
 }
 
 function bindTooltip(div, view, config, metadata){
@@ -2213,7 +2214,6 @@ function bindTooltip(div, view, config, metadata){
             tooltipDiv.style.fontSize = config.tooltip.fontSize;
             tooltipDiv.style.opacity = config.tooltip.opacity;
             tooltipDiv.style.opacity = config.tooltip.opacity;
-            tooltipDiv.className = "chart-tooltip";
         }
 
         window.onmousemove = function (e) {
@@ -2306,8 +2306,8 @@ function getXYAxes(config, xAxesType, xScale, yAxesType, yScale) {
         "type": xAxesType, 
         "scale": xScale,
         "grid": config.grid, 
-        "format" : config.xFormat, 
-        "ticks" : config.xTicks, 
+        "format": config.xFormat, 
+        "ticks": config.xTicks, 
         "title": config.xTitle,
         "properties": xProp
       },
@@ -2315,8 +2315,8 @@ function getXYAxes(config, xAxesType, xScale, yAxesType, yScale) {
         "type": yAxesType, 
         "scale": yScale, 
         "grid": config.grid, 
-        "format" : config.yFormat, 
-        "ticks" : config.yTicks, 
+        "format": config.yFormat, 
+        "ticks": config.yTicks, 
         "title": config.yTitle,
         "properties": yProp
       }
@@ -2334,7 +2334,7 @@ function getXYScales(config, metadata) {
         "domain": config.xScaleDomain
     };
 
-  var yScale = {
+    var yScale = {
         "name": "y",
         "type": metadata.types[config.y],
         "range": "height",
@@ -2342,7 +2342,7 @@ function getXYScales(config, metadata) {
         "domain": config.yScaleDomain
     };
 
-  return [xScale, yScale];
+    return [xScale, yScale];
 }
 
 function getRangeSignals(config, signals) {
@@ -2366,23 +2366,23 @@ function getRangeSignals(config, signals) {
 }
 
 function getRangeMark(config, marks) {
-      marks.push({
-          "type": "rect",
-          "properties":{
-            "enter":{
-              "y": {"value": 0},
-              "height": {"value":config.height},
-              "fill": {"value": config.rangeColor},
-              "fillOpacity": {"value":0.3}
-            },
-            "update":{
-              "x": {"scale": "x", "signal": "range_start"},
-              "x2": {"scale": "x", "signal": "range_end"}
-            }
-          }
-        });
+    marks.push({
+      "type": "rect",
+      "properties":{
+        "enter":{
+          "y": {"value": 0},
+          "height": {"value":config.height},
+          "fill": {"value": config.rangeColor},
+          "fillOpacity": {"value":0.3}
+        },
+        "update":{
+          "x": {"scale": "x", "signal": "range_start"},
+          "x2": {"scale": "x", "signal": "range_end"}
+        }
+      }
+    });
 
-     return marks;
+    return marks;
 }
 
 function getLegend(config) {
